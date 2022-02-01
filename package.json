@@ -1,0 +1,11 @@
+{
+  "name": "axios",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:eternallycyf/eternallcyf-axios.git",
+  "author": "Eternallycyf <969475322@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.25.0"
+  }
+}
