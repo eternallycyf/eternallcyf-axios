@@ -6,4 +6,3 @@ export class InterceptorManager {
     this.handlers.push({ fulfilled, rejected })
   }
 }
-

@@ -1,4 +1,5 @@
 import { request } from './request.js'
+import { CancelToken } from './CancelToken.js'
 import { InterceptorManager } from './interceptor.js'
 class Axios {
   constructor(config) {
@@ -31,4 +32,5 @@ function createInstance(config) {
   return instance
 }
 let axios = createInstance()
+axios.CancelToken = CancelToken
 export default axios

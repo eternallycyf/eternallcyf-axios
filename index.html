@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet">
+</head>
+<body>
+  <button> 发送请求 </button>
   <script type="module">
     import axios from './index.js'
+    // fetch('./db.json').then(async (res) => console.log(await res.json()))
 
     axios.interceptors.request.use(function one(config) {
       console.log('请求拦截器 成功 - 1号');
@@ -40,16 +44,24 @@
       return Promise.reject(error);
     });
 
-    axios({
-      method: 'GET',
-      url: 'http://localhost:3000/posts'
-    }).then(res => {
-    });
-  </script>
-</head>
-<body>
-  <script>
-
+    const btns = document.querySelectorAll('button')
+    let cancel = null;
+    btns[0].onclick = function () {
+      if (cancel !== null) {
+        cancel();
+      }
+      let cancelToken = new axios.CancelToken(
+        function (c) { cancel = c });
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/posts',
+        // url: './db.json',
+        cancelToken: cancelToken
+      }).then(response => {
+        cancel = null;
+        console.log(response.data);
+      })
+    }
   </script>
 </body>
 </html>
