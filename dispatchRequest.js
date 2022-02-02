@@ -7,7 +7,6 @@ export function dispatchRequest(config) {
 }
 
 function xhrAdapter(config) {
-  console.log('xhrAdapter 函数执行');
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
     xhr.open(config.method, config.url);

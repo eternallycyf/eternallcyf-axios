@@ -1,14 +1,15 @@
 import { request } from './request.js'
+import { InterceptorManager } from './interceptor.js'
 class Axios {
   constructor(config) {
     this.defaults = config;
-    this.intercepters = {
-      request: {},
-      response: {}
+    this.interceptors = {
+      request: new InterceptorManager(),
+      response: new InterceptorManager(),
     }
   }
   request(config) {
-    return request(config)
+    return request.call(this, config)
   }
   get(config) {
     return this.request({ method: "GET" })
